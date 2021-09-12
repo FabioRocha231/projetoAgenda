@@ -1,18 +1,15 @@
 const express = require('express');
 const route = express.Router();
 const homeController = require('./src/controllers/homeController')
-const contatoController = require('./src/controllers/contatoControllers')
+const loginController = require('./src/controllers/loginController')
 
-route.get('/', homeController.paginaInicial, (req, res, next) =>{
-    console.log();
-    console.log('Ainda estou aqui...');
-    console.log(`'ultimoMiddleware' Olha no que tem na re.session.nome ${req.session.nome}`);
+// Rotas da home
+route.get('/', homeController.index)
 
-});
-route.post('/', homeController.trataPost)
+// Rotas de login
 
-// rotas de contato
-route.get('/contato', contatoController.contato)
+route.get('/login/index', loginController.index)
+ 
 
 module.exports = route;
 
