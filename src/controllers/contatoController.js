@@ -55,3 +55,16 @@ exports.edit = async (req, res) => {
   }
   
 }
+
+exports.delete = async (req, res) => {
+  if(!req.params.id) return res.render('404');
+  
+  const contato = await Contato.delete(req.params.id);
+  console.log('cracudao de barrigudinha')
+  if(!contato) return res.render('404');
+  console.log('cracudao de lolo')
+
+  req.flash('success', 'Contato apagado com sucesso.');
+  req.session.save(() => res.redirect('back'));
+  return;
+};
